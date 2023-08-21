@@ -19,18 +19,19 @@ import Register from "../screens/auth/Register";
 import ForgetPassword from "../screens/auth/ForgetPassword";
 import { AuthContext } from "../provider/AuthProvider";
 
-// Better put your these secret keys in .env file
-// const firebaseConfig = {
-//   apiKey: "",
-//   authDomain: "",
-//   databaseURL: "",
-//   projectId: "",
-//   storageBucket: "",
-//   messagingSenderId: "",
-//   appId: "",
-// };
+const firebaseConfig = {
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+};
 
-initializeApp(process.env.REACT_APP_firebaseConfig);
+if (getApps().length === 0) {
+  initializeApp(firebaseConfig);
+}
 
 const AuthStack = createNativeStackNavigator();
 const Auth = () => {
