@@ -2,6 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { Layout, Text } from 'react-native-rapi-ui';
 
+import ProfilePicture from '../components/profile/pic';
+
 export default function ({ navigation }) {
 	return (
 		<Layout>
@@ -13,6 +15,7 @@ export default function ({ navigation }) {
 				}}
 			>
 				<Text>This is the Profile tab</Text>
+				<ProfilePicture/>
 			</View>
 		</Layout>
 	);

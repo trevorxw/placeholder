@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
+//Firebase
 import { initializeApp, getApps } from "firebase/app";
+import { getStorage } from "firebase/storage";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -23,15 +26,15 @@ const firebaseConfig = {
   apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
   authDomain: "",
   databaseURL: "",
-  projectId: "",
-  storageBucket: "",
+  projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: "",
   appId: "",
 };
 
-if (getApps().length === 0) {
-  initializeApp(firebaseConfig);
-}
+const app = initializeApp(firebaseConfig);
+
+const storage = getStorage(app);
 
 const AuthStack = createNativeStackNavigator();
 const Auth = () => {
